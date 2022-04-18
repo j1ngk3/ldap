@@ -1,14 +1,5 @@
 # Common Tasks
 ---
-- name: Verify organizations are defined
-  fail:
-    msg: You must define organizations
-  when: organizations is not defined
-- name: Verify base domain is defined
-  fail:
-    msg: You must define base domain
-  when: base_domain is not defined
-
 - include_tasks: deps.yml
 - include_tasks: config.yml
 - include_tasks: structure.yml
