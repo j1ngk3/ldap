@@ -1,4 +1,10 @@
 ---
+ldap_packages:
+  - slapd
+  - ldap-utils
+organizations:
+  - example.com
+ldap_password: "password"
 ldap_base_dc: 'dc=ldap'
 ldap_admin_group: 'admin'
 ldap_services_group: 'services'
