@@ -16,4 +16,4 @@
     dn: olcDatabase={1}mdb,cn=config
     attributes:
       olcRootDN: "{{ ldap_dn_bind }}"
-      olcRootPW: "{{ ldap_pasword }}"
+      olcRootPW: "{{ ldap_password }}"
