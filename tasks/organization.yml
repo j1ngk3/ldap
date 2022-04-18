@@ -7,14 +7,14 @@
       - organization
       - dcObject
       - top
-    params:
+    attributes:
       o: '{{ organization }}'
 
 - name: Create organizational units for {{ organization }}
   ldap_entry:
     state: present
     dn: '{{ item.dn }}'
-    params:
+    attributes:
       ou: '{{ item.ou }}'
     objectClass:
       - organizationalUnit
