@@ -1,16 +1,26 @@
-# Practical Ansible LDAP
+# Ansible Role: ldap
 
-[![CircleCI](https://img.shields.io/circleci/project/github/practical-ansible/ldap.svg)](https://circleci.com/gh/practical-ansible/ldap)
-[![Quality](https://img.shields.io/ansible/quality/21425.svg)](https://galaxy.ansible.com/practical-ansible/ldap)
-[![Downloads](https://img.shields.io/ansible/role/d/21425.svg)](https://galaxy.ansible.com/practical-ansible/ldap)
+An Ansible Role that installs Installs Open LDAP (slapd) as service on specified nodes and configures its structure and permissions to identify users and services among multiple domains on Linux.
 
-Installs Open LDAP (slapd) as service on specified nodes and configures its structure and permissions to identify users and services among multiple domains.
+## Requirements
+
+python-ldap. See [prepare.yml](molecule/default/prepare.yml) for one example of installing.
+
+## Role Variables
 
 Define `organizations` in your playbook or inventory as array of domains and the role will configure the directory structure for all of them.
 
-You also need to define `base_domain` to keep your passwords stored in password storage.
+Generate a slapd compatible password via:
+```
+slappasswd -s password
+```
+and setting `ldap_password` to equal the output.
 
-## Example
+## Dependencies
+
+None.
+
+## Example Playbook
 
 ```
 # playbook.yml
@@ -19,7 +29,6 @@ You also need to define `base_domain` to keep your passwords stored in password 
   hosts: all
   become: yes
   vars:
-    base_domain: my.custom.ldap.domain.com
     organizations:
       - example.com
 
@@ -37,3 +46,11 @@ dc=ldap
    ├─ ou=groups
    └─ ou=users
 ```
+
+## License
+
+MIT
+
+## Author Information
+
+This role was created in 2017 by [Pavel Žák](https://github.com/just-paja), forked in 2022 by [j1ngk3](https://github.com/j1ngk3).
