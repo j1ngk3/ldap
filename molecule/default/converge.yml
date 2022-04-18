@@ -1,7 +1,5 @@
 ---
 - name: Converge
   hosts: all
-  tasks:
-    - name: "Include ldap"
-      include_role:
-        name: "ldap"
+  roles:
+    - role: j1ngk3.ldap
