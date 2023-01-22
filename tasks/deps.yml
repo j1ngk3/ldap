@@ -5,8 +5,7 @@
     state: present
 
 - name: Start slapd
-  systemd:
+  service:
     name: slapd
     state: started
     enabled: true
-    masked: false
